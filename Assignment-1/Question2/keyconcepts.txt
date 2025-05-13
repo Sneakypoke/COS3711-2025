@@ -1,0 +1,128 @@
+# Key Concepts for Qt Banking Transactions Project
+
+## Qt Core Concepts
+1. QMainWindow
+   - Base class for main application windows
+   - Provides a framework for building application windows
+   - Includes menu bar, toolbars, and status bar
+
+2. Qt Widgets
+   - QLineEdit: Text input for amount entry
+   - QPushButton: Interactive buttons for actions
+   - QLabel: Display text and date/time
+   - QHBoxLayout/QVBoxLayout: Widget arrangement
+
+3. QTimer
+   - Time-based events
+   - Periodic updates
+   - Real-time display updates
+
+## Transaction Management
+1. Transaction Class
+   - Stores transaction data
+   - Amount (double)
+   - Date and time (QDateTime)
+   - Transaction type (enum class)
+
+2. TransactionList (Singleton)
+   - Single global instance
+   - Manages transaction pointers
+   - Memory management
+   - Transaction storage and retrieval
+
+3. Enum Class
+   - TransactionType (Deposit, Withdrawal)
+   - Type-safe enumeration
+   - Clear transaction categorization
+
+## File Operations
+1. QFile
+   - File I/O operations
+   - Transaction logging
+   - Error handling
+
+2. QTextStream
+   - Formatted text output
+   - Transaction data writing
+   - Consistent formatting
+
+## Memory Management
+1. Smart Pointer Usage
+   - Transaction* management
+   - Proper cleanup in destructor
+   - Memory leak prevention
+
+2. Singleton Pattern
+   - Single instance enforcement
+   - Global access point
+   - Resource management
+
+## GUI Design
+1. Layout Management
+   - Horizontal and vertical layouts
+   - Widget organization
+   - Responsive design
+
+2. User Input
+   - Amount validation
+   - Error handling
+   - User feedback
+
+3. Real-time Updates
+   - Date/time display
+   - Transaction logging
+   - Console output
+
+## Best Practices
+1. Separation of Concerns
+   - GUI logic in MainWindow
+   - Data management in TransactionList
+   - Transaction handling in Transaction class
+
+2. Error Handling
+   - Input validation
+   - File operation checks
+   - User feedback
+
+3. Code Organization
+   - Class-based design
+   - Clear interfaces
+   - Modular structure
+
+## Build System
+1. CMake
+   - Project configuration
+   - Qt integration
+   - Build settings
+
+2. Qt Build System
+   - MOC (Meta-Object Compiler)
+   - Resource compilation
+   - Dependency management
+
+## Development Tools
+1. Qt Creator
+   - IDE features
+   - Debugging
+   - Project management
+
+2. Version Control
+   - Git integration
+   - Change tracking
+   - Project history
+
+## Testing
+1. Transaction Verification
+   - Amount validation
+   - Type checking
+   - Date/time accuracy
+
+2. File Operations
+   - Transaction logging
+   - File writing
+   - Error handling
+
+3. GUI Testing
+   - User input
+   - Button functionality
+   - Display updates
