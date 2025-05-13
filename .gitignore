@@ -75,3 +75,4 @@ CMakeLists.txt.user*
 # Ignore build directories for each question project
 Assignment-1/Question1-Parser/build/
 
+.vscode/
