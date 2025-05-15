@@ -1,4 +1,4 @@
-# Install script for directory: /Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1-Parser
+# Install script for directory: /Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,14 +38,14 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1-Parser/build/Question1-Parser")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1-Parser" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1-Parser")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1/build/Question1")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1")
     execute_process(COMMAND /usr/bin/install_name_tool
       -delete_rpath "/opt/homebrew/lib"
-      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1-Parser")
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" -u -r "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1-Parser")
+      execute_process(COMMAND "/usr/bin/strip" -u -r "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/Question1")
     endif()
   endif()
 endif()
@@ -53,7 +53,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1-Parser/build/install_local_manifest.txt"
+  file(WRITE "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -69,6 +69,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1-Parser/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/sneaky/Qt/Projects/COS3711-2025/Assignment-1/Question1/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

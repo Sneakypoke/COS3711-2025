@@ -16,6 +16,8 @@ add_executable(Question1
     main.cpp
     textanalyzer.cpp
     textanalyzer.h
+    commandlineparser.cpp
+    commandlineparser.h
 )
 
 target_link_libraries(Question1 Qt${QT_VERSION_MAJOR}::Core)
@@ -24,4 +26,4 @@ include(GNUInstallDirs)
 install(TARGETS Question1
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+) 
