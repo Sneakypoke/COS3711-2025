@@ -1,38 +1,67 @@
 # Banking Transaction Application
 
 ## Overview
-This Qt-based GUI application provides a simple interface for managing banking transactions. Users can perform deposits and withdrawals, with all transactions being tracked and saveable to a file.
+A Qt-based GUI application for managing banking transactions with real-time tracking and file storage capabilities. Part of [COS3711 Assignment 1](../../README.md).
 
 ## Features
 - Real-time date and time display
-- Deposit and withdrawal functionality
-- Transaction recording
+- Deposit and withdrawal transactions
+- Transaction history tracking
 - Export transactions to file
-- Input validation for transaction amounts
+- Input validation and error handling
 
-## Application Structure
-The application consists of several key components:
+## Requirements
+- Qt 5.x or Qt 6.x (Core and Widgets modules)
+- CMake 3.14 or higher
+- C++17 compatible compiler
 
-### Main Window (`mainwindow.h`, `mainwindow.cpp`)
-- Provides the graphical user interface
-- Contains input field for transaction amounts
-- Features three action buttons: Deposit, Withdraw, and "To file"
-- Displays current date and time with automatic updates
-
-### Transaction Management (`transactionlist.h`)
-- Implements the Singleton pattern for managing transactions
-- Maintains a list of all transactions
-- Provides functionality to save transactions to a file
+## Building
+```bash
+mkdir build && cd build
+cmake ..
+make
+```
 
 ## Usage
-1. **Enter Amount**
-   - Type the desired amount in the amount input field
 
-2. **Perform Transaction**
-   - Click "Deposit" to add money
-   - Click "Withdraw" to remove money
-   - Invalid inputs (negative numbers or non-numeric values) will trigger warning messages
+### Main Window
+- Amount input field for transaction values
+- Date and time display with automatic updates
+- Transaction buttons:
+  - Deposit: Add funds
+  - Withdraw: Remove funds
+  - To file: Save transaction history
 
-3. **Save Transactions**
-   - Click "To file" to save all transactions to "transactions.txt"
-   - A confirmation message will appear when the file is saved successfully
+### Transaction Operations
+1. Enter amount in the input field
+2. Click appropriate action button:
+   - "Deposit" for adding funds
+   - "Withdraw" for removing funds
+3. View transaction in history
+4. Click "To file" to save all transactions
+
+### Error Handling
+- Invalid input validation (negative numbers, non-numeric values)
+- Insufficient funds warning
+- File operation status messages
+
+## Lessons Learnt
+### Design Patterns
+- Implementing the Singleton pattern for transaction management
+- Understanding the importance of single responsibility principle
+- Managing shared resources across the application
+
+### GUI Development
+- Creating responsive user interfaces with Qt Widgets
+- Implementing real-time updates with signals and slots
+- Designing user-friendly input validation
+
+### Data Management
+- Maintaining transaction history in memory
+- Implementing file I/O for data persistence
+- Handling date and time operations
+
+### Error Handling
+- Input validation techniques
+- User feedback mechanisms
+- Exception handling in GUI applications
