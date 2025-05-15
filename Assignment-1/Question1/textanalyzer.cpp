@@ -1,10 +1,5 @@
 #include "textanalyzer.h"
 #include <QDebug>
-#include <QFileInfo>
-#include <QDir>
-
-// Define the static member
-const QRegularExpression TextAnalyzer::whitespacePattern("\\s+");
 
 TextAnalyzer::TextAnalyzer() {
     // Initialize regular expressions
@@ -15,34 +10,14 @@ TextAnalyzer::TextAnalyzer() {
 }
 
 bool TextAnalyzer::analyzeFile(const QString& filename, const QStringList& flags) {
-    QFileInfo fileInfo(filename);
-    
-    // If the file doesn't exist, try to find it in the current working directory
-    if (!fileInfo.exists()) {
-        QString currentPath = QDir::currentPath();
-        QString alternativePath = QDir(currentPath).filePath(filename);
-        fileInfo.setFile(alternativePath);
-        
-        if (!fileInfo.exists()) {
-            qDebug() << "Error: Could not find file" << filename;
-            qDebug() << "Tried paths:";
-            qDebug() << "  -" << filename;
-            qDebug() << "  -" << alternativePath;
-            qDebug() << "Current working directory:" << currentPath;
-            return false;
-        }
-    }
-
-    QFile file(fileInfo.absoluteFilePath());
+    QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Error: Could not open file" << fileInfo.absoluteFilePath();
-        qDebug() << "Error details:" << file.errorString();
+        qDebug() << "Error: Could not open file:" << filename;
         return false;
     }
 
     QTextStream in(&file);
-    QString text = in.readAll();
-    text = preprocessText(text);
+    QString text = in.readAll().simplified();
     
     // Clear previous results
     results.clear();
@@ -64,13 +39,6 @@ bool TextAnalyzer::analyzeFile(const QString& filename, const QStringList& flags
     }
     
     return true;
-}
-
-QString TextAnalyzer::preprocessText(const QString& text) {
-    // Remove extra whitespace and normalize line endings
-    QString processed = text.simplified();
-    processed.replace(whitespacePattern, " ");
-    return processed;
 }
 
 int TextAnalyzer::countCapitalLongWords(const QString& text) {
@@ -111,14 +79,4 @@ int TextAnalyzer::countNonVowelStartWords(const QString& text) {
         count++;
     }
     return count;
-}
-
-void TextAnalyzer::showUsage() const {
-    qDebug() << "Usage: count [options] file1 [file2 ...]";
-    qDebug() << "Options:";
-    qDebug() << "  -a    Count words >4 chars starting with uppercase";
-    qDebug() << "  -b    Count hyphenated words";
-    qDebug() << "  -c    Count words starting and ending with same character";
-    qDebug() << "  -d    Count words not starting with a vowel";
-    qDebug() << "If no options specified, all patterns will be analyzed.";
 } 

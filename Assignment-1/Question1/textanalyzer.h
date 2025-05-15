@@ -24,16 +24,11 @@ private:
     int countSameStartEndWords(const QString& text);
     int countNonVowelStartWords(const QString& text);
     
-    // Helper functions
-    QString preprocessText(const QString& text);
-    void showUsage() const;
-    
     // Regular expressions
     QRegularExpression capitalLongWordsPattern;
     QRegularExpression hyphenatedWordsPattern;
     QRegularExpression sameStartEndPattern;
     QRegularExpression nonVowelStartPattern;
-    static const QRegularExpression whitespacePattern;
     
     // Results storage
     QMap<QString, int> results;

@@ -1,6 +1,7 @@
 #include "commandlineparser.h"
 #include <QCoreApplication>
 #include <algorithm>
+#include <QDebug>
 
 CommandLineParser::CommandLineParser() {
     setupOptions();
@@ -9,7 +10,6 @@ CommandLineParser::CommandLineParser() {
 void CommandLineParser::initialize(QCoreApplication& app) {
     // Set application info
     app.setApplicationName("count");
-    app.setApplicationVersion("1.0");
     
     // Process arguments
     m_parser.process(app);
@@ -17,10 +17,12 @@ void CommandLineParser::initialize(QCoreApplication& app) {
     // Get files
     m_files = m_parser.positionalArguments();
     
-    // If no files specified, use defaults
+    // Show error if no files specified
     if (m_files.isEmpty()) {
-        m_files << "file1.txt" << "file2.txt";
-        return;
+        qDebug() << "Error: No input files specified.";
+        qDebug() << "Usage: ./Question1 [options] files...";
+        qDebug() << "Use --help for more information.";
+        exit(1);
     }
     
     // Handle both separate (-a -b) and combined (-ab) flags
@@ -38,7 +40,9 @@ void CommandLineParser::initialize(QCoreApplication& app) {
 void CommandLineParser::setupOptions() {
     m_parser.setApplicationDescription("Text file analyzer using regular expressions");
     m_parser.addHelpOption();
-    m_parser.addVersionOption();
+    
+    // Add positional argument for input files
+    m_parser.addPositionalArgument("files", "Text file(s) to analyze", "files...");
     
     // Add options
     m_parser.addOption(QCommandLineOption("a", "Count words >4 chars starting with uppercase"));
