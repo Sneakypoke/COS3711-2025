@@ -1,5 +1,6 @@
 #include "commandlineparser.h"
 #include <QCoreApplication>
+#include <algorithm>
 
 CommandLineParser::CommandLineParser() {
     setupOptions();
@@ -24,7 +25,7 @@ void CommandLineParser::initialize(QCoreApplication& app) {
     
     // Handle both separate (-a -b) and combined (-ab) flags
     QString combinedFlags;
-    for (const QString& arg : qAsConst(m_files)) {
+    for (const QString& arg : std::as_const(m_files)) {
         if (arg.startsWith("-") && arg.length() > 1) {
             combinedFlags += arg.mid(1);
             m_files.removeOne(arg);
@@ -40,10 +41,10 @@ void CommandLineParser::setupOptions() {
     m_parser.addVersionOption();
     
     // Add options
-    m_parser.addOption({{"a"}, "Count words >4 chars starting with uppercase"});
-    m_parser.addOption({{"b"}, "Count hyphenated words"});
-    m_parser.addOption({{"c"}, "Count words starting and ending with same character"});
-    m_parser.addOption({{"d"}, "Count words not starting with a vowel"});
+    m_parser.addOption(QCommandLineOption("a", "Count words >4 chars starting with uppercase"));
+    m_parser.addOption(QCommandLineOption("b", "Count hyphenated words"));
+    m_parser.addOption(QCommandLineOption("c", "Count words starting and ending with same character"));
+    m_parser.addOption(QCommandLineOption("d", "Count words not starting with a vowel"));
 }
 
 void CommandLineParser::processFlags(const QString& combinedFlags) {

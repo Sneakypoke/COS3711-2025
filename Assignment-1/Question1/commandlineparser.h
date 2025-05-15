@@ -25,4 +25,6 @@ private:
     QCommandLineParser m_parser;
     QStringList m_files;
     QStringList m_flags;
-}; 
+};
+
+#endif // COMMANDLINEPARSER_H 
